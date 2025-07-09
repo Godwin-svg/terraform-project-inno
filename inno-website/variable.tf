@@ -24,3 +24,4 @@ variable "private_data_subnet_az1_cidr" {}
 
 # private data subnet az2 cidr
 variable "private_data_subnet_az2_cidr" {}
+

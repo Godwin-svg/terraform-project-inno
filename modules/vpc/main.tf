@@ -88,33 +88,6 @@ resource "aws_route_table_association" "public_az2_rt_association" {
   
 }
 
-# create public subnet az1
-resource "aws_subnet" "public_subnet_az1" {
-    vpc_id = aws_vpc.vpc.id 
-    cidr_block = var.public_subnet_az1_cidr
-    map_public_ip_on_launch = true
-    availability_zone = data.aws_availability_zones.available_zones.names[0]
-
-    tags = {
-      Name = "${project_name}-public_subnet_az1"
-    }
-
-  
-}
-
-# create public subnet az2
-resource "aws_subnet" "public_subnet_az2" {
-    vpc_id = aws_vpc.vpc.id 
-    cidr_block = var.public_subnet_az2_cidr
-    map_public_ip_on_launch = true
-    availability_zone = data.aws_availability_zones.available_zones.names[1]
-
-    tags = {
-      Name = "${project_name}-public_subnet_az2"
-    }
- 
-}
-
 # create private app subnet az1
 resource "aws_subnet" "private_app_subnet_az1" {
     vpc_id = aws_vpc.vpc.id 
@@ -129,7 +102,7 @@ resource "aws_subnet" "private_app_subnet_az1" {
 }
 
 # create private app subnet az2
-resource "aws_subnet" "private_app_subnet_az1" {
+resource "aws_subnet" "private_app_subnet_az2" {
     vpc_id = aws_vpc.vpc.id 
     cidr_block = var.private_app_subnet_az2_cidr
     map_public_ip_on_launch = false

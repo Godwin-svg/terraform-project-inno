@@ -44,3 +44,9 @@ output "private_data_subnet_az2_cidr" {
     value = var.private_data_subnet_az2_cidr
   
 }
+
+# internet gateway
+output "internet-gateway" {
+    value = aws_internet_gateway.internet-gateway
+  
+}

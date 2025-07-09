@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "value"
-    key = "inno-website.tfstate"
+    bucket = "inno-terraform-remote-state"
+    key = "inno-terraform-remote-state"
     region = "us-east-1"
     profile = "dev"
     
