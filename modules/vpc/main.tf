@@ -5,7 +5,7 @@ resource "aws_vpc" "vpc" {
     enable_dns_hostnames = true 
 
     tags = {
-      Name = "${project_name}-vpc"
+      Name = "${var.project_name}-vpc"
     }
 
   
@@ -16,7 +16,7 @@ resource "aws_internet_gateway" "internet-gateway" {
     vpc_id = aws_vpc.vpc.id 
 
     tags = {
-      Name = "${project_name}-internet-gateway"
+      Name = "${var.project_name}-internet-gateway"
     }
   
 }
@@ -49,12 +49,12 @@ data "aws_availability_zones" "available_zones" {}
 # create public subnet az1
 resource "aws_subnet" "public_subnet_az1" {
     vpc_id = aws_vpc.vpc.id 
-    cidr_block = ""
+    cidr_block = var.public_subnet_az1_cidr
     map_public_ip_on_launch = true
     availability_zone = data.aws_availability_zones.available_zones.names[0]
 
     tags = {
-      Name = "${project_name}-public_subnet_az1"
+      Name = "${var.project_name}-public_subnet_az1"
     }
 
   
@@ -63,12 +63,12 @@ resource "aws_subnet" "public_subnet_az1" {
 # create public subnet az2
 resource "aws_subnet" "public_subnet_az2" {
     vpc_id = aws_vpc.vpc.id 
-    cidr_block = ""
+    cidr_block = var.public_subnet_az2_cidr
     map_public_ip_on_launch = true
     availability_zone = data.aws_availability_zones.available_zones.names[1]
 
     tags = {
-      Name = "${project_name}-public_subnet_az2"
+      Name = "${var.project_name}-public_subnet_az2"
     }
 
   
@@ -96,7 +96,7 @@ resource "aws_subnet" "private_app_subnet_az1" {
     availability_zone = data.aws_availability_zones.available_zones.names[0]
 
     tags = {
-      Name = "${project_name}-private_app_subnet_az1"
+      Name = "${var.project_name}-private_app_subnet_az1"
     }
 
 }
@@ -109,7 +109,7 @@ resource "aws_subnet" "private_app_subnet_az2" {
     availability_zone = data.aws_availability_zones.available_zones.names[0]
 
     tags = {
-      Name = "${project_name}-private_app_subnet_az1"
+      Name = "${var.project_name}-private_app_subnet_az1"
     }
 
 }
@@ -122,7 +122,7 @@ resource "aws_subnet" "private_data_subnet_az1" {
     availability_zone = data.aws_availability_zones.available_zones.names[0]
 
     tags = {
-      Name = "${project_name}-private_data_subnet_az1"
+      Name = "${var.project_name}-private_data_subnet_az1"
     }
 
 }
@@ -135,7 +135,7 @@ resource "aws_subnet" "private_data_subnet_az2" {
     availability_zone = data.aws_availability_zones.available_zones.names[1]
 
     tags = {
-      Name = "${project_name}-private_data_subnet_az2"
+      Name = "${var.project_name}-private_data_subnet_az2"
     }
 
 }
